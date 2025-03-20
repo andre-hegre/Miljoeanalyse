@@ -10,12 +10,10 @@ headers={"User-Agent": "værdatainnsamling/1.0 (andrhegr@stud.ntnu.no)"}
 response=requests.get(url,headers=headers)
 if response.status_code == 200:
     data = response.json()
-<<<<<<< HEAD
-    with open("Miljoeanalyse/proj_environment-main/data/weather_data.json", "w") as json_file:
-=======
-    with open("proj_environment-main/weather_data.json", "w") as json_file:
->>>>>>> ec06f7a7d687f2f5f864b18b73a3398533e44ffb
+    with open("proj_environment-main\data\weather_data.json", "w") as json_file:
         json.dump(data, json_file, indent=4)
 else: 
-    print("error")
+    print("error") 
+    
+     
    
