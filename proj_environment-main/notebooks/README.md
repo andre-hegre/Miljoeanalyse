@@ -1,1 +1,1 @@
-Describes the notebooks directory
+Her er readmefilen skrevet som en .md fil
