@@ -2,3 +2,4 @@
 /__pycache__/
 *.pyc
 /venv/
+/data/Frost_Observations.json
