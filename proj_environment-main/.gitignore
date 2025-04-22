@@ -2,7 +2,5 @@
 /__pycache__/
 *.pyc
 /venv/
-# Ignorerer datafiler
-data/*.csv
-data/*.json
+
 
