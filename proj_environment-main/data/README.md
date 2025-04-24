@@ -1,1 +1,27 @@
-Describes the data directory and datasets
+## Her forklarer vi de forskjellige datafilene: 
+
+
+### Frost_Observations.json
+
+Dette er den uendrede dataen vi hentet fra Meterologisk Institutt API. Her finner man all innsamlet data ufiltrert
+
+
+### df2_data.json
+
+Her er filtrert og litt mer organisert data fra "Frost_Observations.json" filen omgjort til en dataframe. 
+
+
+### df2_errors.json
+
+Dette er filen der feilverdier er introdusert via funksjonene i notebooken "Hegre_branch"
+
+
+### luftkvalitet_Kirkeveien_all_years.json
+
+Dette er filen som inneholder innsamlet luftkvalitetsdata, uten endringer. 
+
+
+### df1_data.json: 
+
+Dette er en dataframe som inneholder luftkvalitetsdata på en ryddig måte. Denne fikk vi ved å utføre en pivot i dataframe fra filen "luftkvalitet_Kirkeveien_all_years.json" og filtrere den
+
