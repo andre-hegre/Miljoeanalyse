@@ -29,7 +29,7 @@ Her bruker vi matplotlib og seaborn til å visualisere dataen på forskjellige v
 ### Dataanalyse
 
 
-Her analyserer vi dataen og finner satistiske mål som gjennomsnitt, standardavvik og korrelasjon mellom datasettene. 
+Her analyserer vi dataen og finner statistiske mål som gjennomsnitt, standardavvik og korrelasjon mellom datasettene. 
 
 
 
