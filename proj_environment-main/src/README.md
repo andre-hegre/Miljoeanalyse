@@ -38,6 +38,10 @@ Vi valgte å hente data for 5 år, og rundt vår-sommermånedene (April-Juli). V
 
 Regn, vind, luftfuktighet og temperatur har effekter på konsentrasjoner av luftpartikler (UCAR,[Hentet 2021](https://scied.ucar.edu/learning-zone/air-quality/how-weather-affects-air-quality)). Vi valgte derfor data for nedbør, vind, temperatur og luftfuktighet fra Frost, og samtidig data for forskjellige partikkelkonsentrasjoner. 
 
+En ting vi ikke fikk gjort som kunne vært interessant var å undersøke effekten av vindretningen, og se om sammenhengen mellom for eksempel vind kunne variere basert på vindretningen. 
+
+Dette ville innebært å hente et nytt datasett med vindretning for siste 10 minutt og gjøre dataanalyser basert på det. Dette valgte vi å se bort ifra i prosjektet. Vindretning kan variere mye i en dag, og det ville vært mye mer komplisert å ta det i betraktning i all vind-analyse, men kan være noe å undersøke videre om man er spesielt interessert i vindeffekt på luftkvalitet. 
+
 Fra begge kildene var det mulig å få gjennomsnitt i løpet av én dag istedet for å manuelt ta det time for time. Dette gjorde det lettere å jobbe med, og lettere å sammenligne de to datasettene. 
 
 Vi brukte requests modulen til å hente data, og lagret de som JSON filer i folderen "data".
