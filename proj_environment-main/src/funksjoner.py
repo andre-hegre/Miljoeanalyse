@@ -17,16 +17,22 @@ def introduser_uteliggere(df , kolonne="mean(air_temperature P1D)" , frac=0.04):
 
 def håndter_mangler(df,column,method,degree=1):
     df=df.copy()
-    if method=='median':
-        df[column]=df[column].fillna(df[column].median())
-    elif method == 'interpolate':
-        df[column] = df[column].interpolate(method='polynomial',order=degree)
-    elif method == 'ffill':
-        df[column] = df[column].fillna(method='ffill')
-    elif method == 'bfill':
-        df[column] = df[column].fillna(method='bfill')
-    else: 
-        df[column] = df[column].fillna(df[column].mean())
+    if column not in df:
+        raise ValueError(f"Column {column} not in {df}")
+    try: 
+
+        if method=='median':
+            df[column]=df[column].fillna(df[column].median())
+        elif method == 'interpolate':
+            df[column] = df[column].interpolate(method='polynomial',order=degree)
+        elif method == 'ffill':
+            df[column] = df[column].fillna(method='ffill')
+        elif method == 'bfill':
+            df[column] = df[column].fillna(method='bfill')
+        else: 
+            df[column] = df[column].fillna(df[column].mean())
+    except Exception as e:
+        raise RuntimeError(f"Unable to handle missing values with method {method}: {e}")
     return df
 
 
