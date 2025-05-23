@@ -49,7 +49,7 @@ def håndter_mangler(df,column,method,degree=1):
     return df
 
 
-def håndter_uteliggere(df,column,upper=100,lower=-50):
+def håndter_uteliggere(df,column,upper=100.0,lower=-50.0):
     df=df.copy()
     if upper<=lower:
         raise TypeError("Upper boundary not be equal to or lower than lower boundary")
