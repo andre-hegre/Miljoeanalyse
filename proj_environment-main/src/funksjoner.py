@@ -60,3 +60,23 @@ def håndter_uteliggere(df,column,upper=100.0,lower=-50.0):
     
     df[column]=np.where((df[column]<lower) | (df[column]>upper),np.nan,df[column])
     return df
+
+
+#beregning av statistikk for en kolonne i en DataFrame
+def beregn_statistikk(df, kolonne, tidskolonne=None):
+    import pandas as pd
+    import numpy as np
+
+    if kolonne not in df.columns:
+        raise ValueError(f"Kolonnen '{kolonne}' finnes ikke i DataFrame")
+
+    resultat = {
+        "gjennomsnitt": df[kolonne].mean(),
+        "median": df[kolonne].median(),
+        "standardavvik": df[kolonne].std()
+    }
+
+    
+
+
+
