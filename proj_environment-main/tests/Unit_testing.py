@@ -9,23 +9,65 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src'
 from funksjoner import introduser_NaN
 
 class test_introduserNaN(unittest.TestCase):
+
+    def setUp(self):
+        self.df=pd.DataFrame({'Data':[1,2,3,4,5]})
+
     def test_positiv(self):
-        df=pd.DataFrame({'Data': [1,2,3,4,5]})
-        df_NaN=introduser_NaN(df, kolonne='Data', frac=0.4)
-        self.assertEqual(df_NaN['A'].isna().sum,2)
+        df_NaN=introduser_NaN(self.df, kolonne='Data', frac=0.4)
+        self.assertEqual(df_NaN['Data'].isna().sum(),2)
+
     def test_invalid_frac(self):
-        df = pd.DataFrame({"A": [1, 2, 3]})
         with self.assertRaises(ValueError):
-            introduser_NaN(df, kolonne="A", frac=1.5)
+            introduser_NaN(self.df, kolonne="Data", frac=1.5)
 
     def test_invalid_df(self):
         with self.assertRaises(TypeError):
-            introduser_NaN([1, 2, 3], kolonne="A", frac=0.1)
+            introduser_NaN([1, 2, 3], kolonne="Data", frac=0.1)
 
     def test_missing_column(self):
-        df = pd.DataFrame({"A": [1, 2, 3]})
         with self.assertRaises(ValueError):
-            introduser_NaN(df, kolonne="B", frac=0.1)
+            introduser_NaN(self.df, kolonne="B", frac=0.1)
+
+from funksjoner import introduser_uteliggere
+class test_introduserUteliggere(unittest.TestCase):
+
+    def setUp(self):
+        self.df=pd.DataFrame({'Data':[1,2,3,4,5]})
+
+    def test_positiv(self):
+        df_uteliggere=introduser_uteliggere(self.df,kolonne='Data',frac=0.4)
+        count=(df_uteliggere['Data']==570).sum()
+        self.assertEqual(count,2)
+    
+    def test_zerofrac(self):
+        df_zerofrac=introduser_uteliggere(self.df,kolonne='Data',frac=0.0)
+        self.assertTrue((df_zerofrac['Data'] != 570).all())
+    
+    def test_invalid_frac_high(self):
+        with self.assertRaises(ValueError):
+            introduser_uteliggere(self.df, 'Data', frac=1.2)
+    
+    def test_invalid_frac_low(self):
+        with self.assertRaises(ValueError):
+            introduser_uteliggere(self.df, 'Data', frac=-0.1)
+    
+    def test_invalid_dataframe(self):
+        with self.assertRaises(TypeError):
+            introduser_uteliggere([1, 2, 3], frac=0.2)
+
+    def test_missing_column(self):
+        df = pd.DataFrame({'Data': [1, 2, 3]})
+        with self.assertRaises(ValueError):
+            introduser_uteliggere(df, kolonne='Database')
+    
+    def test_column_unchanged_elsewhere(self):
+        result = introduser_uteliggere(self.df, 'Data',frac=0.4)
+        unchanged = result[result['Data'] != 570]
+        self.assertTrue((unchanged['Data'] < 100).all())
+
+
+
 
 if __name__ == "__main__":
     unittest.main()

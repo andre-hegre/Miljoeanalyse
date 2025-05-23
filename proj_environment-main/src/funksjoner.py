@@ -15,7 +15,7 @@ def introduser_NaN(df , kolonne="mean(relative_humidity P1D)" , frac=0.06):
     return df
 
 # introduserer enkelte tallverdier på 570, som ikke gir mening (uteliggere)
-def introduser_uteliggere(df , kolonne="mean(air_temperature P1D)" , frac=0.04):
+def introduser_uteliggere(df , kolonne, frac=0.04):
     df=df.copy()
     if frac>1 or frac<0:
         raise ValueError("Frac must be a value between 0 and 1")
