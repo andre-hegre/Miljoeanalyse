@@ -11,17 +11,12 @@ Her er en forklaring av hver mappe og funksjonalitet:
 Her omformer vi den rå dataen fra NILU og Frost til pandas dataframes og prøver å forstå dataen, og gjøre enkle filtreringer på den for å teste dataen ut litt. Vi lagrer de nye dataframes til nye json filer i folderen "data" og bruker pandasql til å gjøre enkle query filtreringer på dataframe. 
 
 
-### Error
+### Feilhåndtering:
 
-Her tilfører vi feil og uregelmessigheter i dataen, slik at vi kan etterpå fikse på det igjen. Vi bruker funksjoner til å introdusere feil, uteliggere og manglende verdier til datasett. Vi lagrer nye filer med feilene til folderen "data"
-
-
-### Funksjoner_data
-
-Her fikser vi dataen vi endret på i "Error", og bruker metoder som "interpolate" til å fylle inn manglende verdier. Vi legger til de fikset filene under folderen "data".
+Her skal vi både tilsette flere typer feil i datasettene, samt rette opp i disse feilene ved bruk av importerte funksjoner. Vi legger til feil i værdataen, og bruker nye funksjoner til å rette dette opp igjen, og rette opp eksisterende mangler i luftkvalitetsdataen. 
 
 
-### Visualisering
+### Visualisering+prediktiv analyse:
 
 Her bruker vi matplotlib og seaborn til å visualisere dataen på forskjellige vis med forskjellige grafer. Vi bruker begge datasettene og plotter de mot hverandre for å kunne se visuelt sammenhengen mellom de. 
 
