@@ -76,7 +76,8 @@ def beregn_statistikk(df, kolonne, tidskolonne=None):
         "standardavvik": df[kolonne].std()
     }
 
-    
+    return resultat
+
 
 
 
