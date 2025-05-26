@@ -146,5 +146,43 @@ class TestHåndterUteliggere(unittest.TestCase):
         _ = håndter_uteliggere(self.df, column="temperature", lower=-50, upper=100)
         pd.testing.assert_frame_equal(self.df, original)
 
+from funksjoner import beregn_statistikk
+
+class TestBeregningStatistikk(unittest.TestCase):
+
+    def setUp(self):
+        self.df = pd.DataFrame({
+            "value": [1, 2, 3, 4, 5]
+        })
+
+    def test_korrekt_statistikk(self): #Tester at statistikken er korrekt
+        stat = beregn_statistikk(self.df, kolonne="value")
+        self.assertEqual(stat["gjennomsnitt"], 3.0)
+        self.assertEqual(stat["median"], 3.0)
+        self.assertAlmostEqual(stat["standardavvik"], np.std([1, 2, 3, 4, 5], ddof=1))
+
+    def test_kolonne_ikke_funnet(self): #Tester at kolonne ikke finnes
+        with self.assertRaises(ValueError):
+            beregn_statistikk(self.df, kolonne="ukjent")
+
+    def test_tom_kolonne(self): # Tester tom kolonne
+        df_tom = pd.DataFrame({"value": []})
+        stat = beregn_statistikk(df_tom, kolonne="value")
+        self.assertTrue(np.isnan(stat["gjennomsnitt"]))
+        self.assertTrue(np.isnan(stat["median"]))
+        self.assertTrue(np.isnan(stat["standardavvik"]))
+
+    def test_nan_verdier(self): # Tester håndtering av NaN-verdier
+        df_nan = pd.DataFrame({"value": [1, np.nan, 3, np.nan, 5]})
+        stat = beregn_statistikk(df_nan, kolonne="value")
+        self.assertAlmostEqual(stat["gjennomsnitt"], np.nanmean([1, 3, 5]))
+        self.assertAlmostEqual(stat["median"], np.nanmedian([1, 3, 5]))
+        self.assertAlmostEqual(stat["standardavvik"], np.nanstd([1, 3, 5], ddof=1))
+
 if __name__ == "__main__":
     unittest.main()
+
+
+
+    if __name__ == "__main__":
+        unittest.main()
