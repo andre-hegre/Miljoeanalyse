@@ -26,6 +26,7 @@ def introduser_uteliggere(df , column, frac=0.04):
     df.loc[df.sample(frac=frac).index, column] = 570
     return df
 
+# Håndterer manglende verdier i datasettet ved bruk av diverse metoder
 def håndter_mangler(df,column,method,degree=1):
     df=df.copy()
     if column not in df:
@@ -48,7 +49,7 @@ def håndter_mangler(df,column,method,degree=1):
         raise RuntimeError(f"Unable to handle missing values with method {method}: {e}")
     return df
 
-
+# Håndterer uteliggere i datasettet ved å bruke øvre og nedre grenser til å filtrere de ut
 def håndter_uteliggere(df,column,upper=100.0,lower=-50.0):
     df=df.copy()
     if upper<=lower:
@@ -62,10 +63,8 @@ def håndter_uteliggere(df,column,upper=100.0,lower=-50.0):
     return df
 
 
-#beregning av statistikk for en kolonne i en DataFrame
+# Beregning av statistikk for en kolonne i en DataFrame
 def beregn_statistikk(df, kolonne, tidskolonne=None):
-    import pandas as pd
-    import numpy as np
 
     if kolonne not in df.columns:
         raise ValueError(f"Kolonnen '{kolonne}' finnes ikke i DataFrame")
