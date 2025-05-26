@@ -26,3 +26,8 @@ Her bruker vi matplotlib og seaborn til å visualisere dataen på forskjellige v
 
 Her analyserer vi dataen og finner statistiske mål som gjennomsnitt, standardavvik og korrelasjon mellom datasettene. 
 
+
+### Oppg1
+
+Oppgave 1
+
